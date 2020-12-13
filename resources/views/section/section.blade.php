@@ -138,7 +138,7 @@
                     </div>
 
                     <div class="modal-body">
-                        <form method="POST" action="{{ route('sections.update', $section->id) }}" autocomplete="off">
+                        <form method="POST" action="sections/update" autocomplete="off">
                             {{method_field('patch')}}
                             @csrf
                             <div class="form-group">
@@ -177,7 +177,7 @@
                     </div>
 
                     <div class="modal-body">
-                        <form method="POST" action="{{ route('sections.destroy', $section->id) }}" autocomplete="off">
+                        <form method="POST" action="sections/destroy" autocomplete="off">
                             {{method_field('delete')}}
                             @csrf
                             <div class="modal-body">
