@@ -42,7 +42,7 @@
                     <div class="d-flex justify-content-between">
                         <div class="col-sm-6 col-md-4 col-xl-3">
                             <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale"
-                                data-toggle="modal" href="#modaldemo8">إضافة قسم</a>
+                                data-toggle="modal" href="#add_section">إضافة قسم</a>
                         </div>
                     </div>
                 </div>
@@ -68,13 +68,15 @@
                                 <td>{{$section->created_by}}</td>
                                 <td>
                                     <div class="btn-icon-list">
-                                        <a  href="#modaldemo2" class="btn btn-primary btn-icon"data-effect="effect-scale"
-                                    data-id="{{$section->id}}" data-section_name="{{$section->section_name}}" data-description="{{$section->description}}"
-                                         data-toggle="modal"><i class="typcn typcn-edit" title="تعديل"></i></a>
 
-                                        <a href="#modaldemo6" class="btn btn-danger btn-icon" data-effect="effect-scale"
-                                        data-id="{{$section->id}}" data-section_name="{{$section->section_name}}"
-                                        data-toggle="modal"><i class="typcn typcn-document-delete" title="حذف"></i></a>
+                                        <button class="btn btn-outline-success btn-sm"
+													data-section_name="{{ $section->section_name }}" data-id="{{$section->id}}"
+													data-description="{{ $section->description }}" data-toggle="modal"
+													data-target="#edit_section">تعديل</button>
+	
+												<button class="btn btn-outline-danger btn-sm " data-id="{{$section->id}}"
+													data-section_name="{{ $section->section_name }}" data-toggle="modal"
+													data-target="#delete_section">حذف</button>
                                 
                                     </div>
                                 </td>
@@ -93,7 +95,7 @@
         <!-- Basic modal -->
 
         {{-- ADD --}}
-        <div class="modal" id="modaldemo8">
+        <div class="modal" id="add_section">
             <div class="modal-dialog" role="document">
                 <div class="modal-content modal-content-demo">
                     <div class="modal-header">
@@ -106,12 +108,12 @@
                             @csrf
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">إسم القسم</label>
-                                <input type="text" class="form-control" id="inputName" name="section_name" required>
+                                <input type="text" class="form-control" id="section_name" name="section_name" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleFormControlTextarea1">ملاحظات</label>
-                                <textarea class="form-control" id="inputName" name="description" cols="15"
+                                <label for="exampleFormControlTextarea1">الوصف</label>
+                                <textarea class="form-control" id="description" name="description" cols="15"
                                     rows="5"></textarea>
                             </div>
 							
@@ -129,7 +131,7 @@
         <!-- Basic modal -->
 
         {{-- EDIT --}}
-        <div class="modal" id="modaldemo2">
+        <div class="modal" id="edit_section">
             <div class="modal-dialog" role="document">
                 <div class="modal-content modal-content-demo">
                     <div class="modal-header">
@@ -148,13 +150,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleFormControlTextarea1">ملاحظات</label>
+                                <label for="exampleFormControlTextarea1">الوصف</label>
                                 <textarea class="form-control" id="description" name="description" cols="15"
                                     rows="5"></textarea>
                             </div>
                             
                             <div class="modal-footer">
-                                <button class="btn ripple btn-primary" type="submit">حفظ القسم</button>
+                                <button class="btn ripple btn-primary" type="submit">تعديل القسم</button>
                                 <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">إغلاق</button>
                             </div>
                         </form>
@@ -168,7 +170,7 @@
         <!-- Basic modal -->
 
         {{-- DELET --}}
-        <div class="modal" id="modaldemo6">
+        <div class="modal" id="delete_section">
             <div class="modal-dialog" role="document">
                 <div class="modal-content modal-content-demo">
                     <div class="modal-header">
@@ -230,7 +232,7 @@
     <script src="{{ URL::asset('assets/js/modal.js') }}"></script>
 
     <script>
-        $('#modaldemo2').on('show.bs.modal', function(event) {
+        $('#edit_section').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
             var id = button.data('id')
             var section_name = button.data('section_name')
@@ -243,7 +245,7 @@
     </script>
 
 <script>
-    $('#modaldemo6').on('show.bs.modal', function(event) {
+    $('#delete_section').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var id = button.data('id')
         var section_name = button.data('section_name')

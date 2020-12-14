@@ -44,6 +44,8 @@
 								</div>
 							</div>
 							<div class="card-body">
+								@include('alerts.success')
+								@include('alerts.errors')
 								<div class="table-responsive">
 									<table id="example1" class="table key-buttons text-md-nowrap" data-page-length="50">
 										<thead>
@@ -51,7 +53,7 @@
 												<th class="border-bottom-0">إسم المنتج</th>
 												<th class="border-bottom-0">إسم القسم</th>
 												<th class="border-bottom-0">مدخل بواسطة</th>
-												<th class="border-bottom-0">ملاحظات</th>
+												<th class="border-bottom-0">الوصف</th>
 												<th class="border-bottom-0">الإجراء</th>
 											</tr>
 										</thead>
@@ -71,7 +73,7 @@
 	
 												<button class="btn btn-outline-danger btn-sm " data-pro_id="{{ $product->id }}"
 													data-product_name="{{ $product->product_name }}" data-toggle="modal"
-													data-target="#modaldemo9">حذف</button>
+													data-target="#delete-product">حذف</button>
 												</td>
 											</tr>
 											@endforeach
@@ -111,13 +113,13 @@
 							</select>
 
                             <div class="form-group">
-                                <label for="exampleFormControlTextarea1">ملاحظات</label>
+                                <label for="exampleFormControlTextarea1">الوصف</label>
                                 <textarea class="form-control" id="description" name="description" cols="15"
                                     rows="5"></textarea>
                             </div>
 							
 							<div class="modal-footer">
-								<button class="btn ripple btn-primary" type="submit">حفظ المنتج</button>
+								<button class="btn ripple btn-primary" type="submit">إضافة المنتج</button>
 								<button class="btn ripple btn-secondary" data-dismiss="modal" type="button">إغلاق</button>
 							</div>
 						</form>
@@ -143,7 +145,7 @@
 									<div class="form-group">
 										
 										<label for="exampleFormControlTextarea1">إسم المنتج</label>
-										<input type="hidden" class="form-control" name="id" id="id" value="">
+										<input type="hidden" class="form-control" name="pro_id" id="pro_id" value="">
 										<input type="text" class="form-control" id="product_name" name="product_name" required>
 									</div>
 
@@ -156,7 +158,7 @@
 							</select>
 		
 									<div class="form-group">
-										<label for="exampleFormControlTextarea1">ملاحظات</label>
+										<label for="exampleFormControlTextarea1">الوصف</label>
 										<textarea class="form-control" id="description" name="description" cols="15"
 											rows="5"></textarea>
 									</div>
@@ -171,6 +173,36 @@
 					</div>
 				</div>
 				<!-- End Basic modal -->
+
+				    {{-- DELET --}}
+					<div class="modal" id="delete-product">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content modal-content-demo">
+								<div class="modal-header">
+									<h6 class="modal-title">حذف منتج</h6><button aria-label="Close" class="close"
+										data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+								</div>
+			
+								<div class="modal-body">
+									<form method="POST" action="products/destroy" autocomplete="off">
+										{{method_field('delete')}}
+										@csrf
+										<div class="modal-body">
+											<p>هل انت متاكد من حذف المنتج التالي ؟</p><br>
+											<input type="hidden" name="pro_id" id="pro_id" value="">
+										<input class="form-control" name="product_name" id="product_name" type="text" readonly>
+										</div>
+										
+										<div class="modal-footer">
+											<button class="btn ripple btn-primary" type="submit">حذف</button>
+											<button class="btn ripple btn-secondary" data-dismiss="modal" type="button">إلغاء</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End Basic modal -->
 			</div>
 				<!-- row closed -->
 			</div>
@@ -206,11 +238,24 @@
 		var product_name = button.data('product_name')
 		var description = button.data('description')
 		var section_name = button.data('section_name')
+		var pro_id = button.data('pro_id')
 		var modal = $(this)
 		modal.find('.modal-body #id').val(id);
 		modal.find('.modal-body #product_name').val(product_name);
 		modal.find('.modal-body #description').val(description);
 		modal.find('.modal-body #section_name').val(section_name);
+		modal.find('.modal-body #pro_id').val(pro_id);
 	})
+</script>
+
+<script>
+    $('#delete-product').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var pro_id = button.data('pro_id')
+        var product_name = button.data('product_name')
+        var modal = $(this)
+        modal.find('.modal-body #pro_id').val(pro_id);
+        modal.find('.modal-body #product_name').val(product_name);
+    })
 </script>
 @endsection

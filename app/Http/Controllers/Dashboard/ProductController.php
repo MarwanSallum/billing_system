@@ -81,11 +81,12 @@ class ProductController extends Controller
      */
     public function update(Request $request)
     {
+   
         $id = Section::where('section_name', $request->section_name)->first()->id;
 
-        $Products = Product::findOrFail($request->id);
+        $products = Product::findOrFail($request->pro_id);
  
-        $Products->update([
+        $products->update([
         'product_name' => $request->product_name,
         'description' => $request->description,
         'section_id' => $id,
@@ -100,8 +101,12 @@ class ProductController extends Controller
      * @param  \App\Model\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request)
     {
-        //
+       
+        $Product = Product::findOrFail($request->pro_id);
+        $Product->delete();
+        return redirect()->route('products.index')->with(['success' => "تم حذف المنتج بنجاح"]);
+
     }
 }
