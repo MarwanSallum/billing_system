@@ -28,16 +28,18 @@
 						<!--div-->
 						<div class="col-xl-12">
 							<div class="card mg-b-20">
-								<div class="card-header pb-0">
-									<div class="d-flex justify-content-between">
-										<h4 class="card-title mg-b-0">Bordered Table</h4>
-										<i class="mdi mdi-dots-horizontal text-gray"></i>
+								<div class="card mg-b-20">
+									<div class="card-header pb-0">
+										<div class="d-flex justify-content-between">
+											<div class="col-sm-6 col-md-4 col-xl-3">
+												<a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale"
+											data-toggle="modal" href="{{route('invoices.create')}}">إضافة فاتورة</a>
+											</div>
+										</div>
 									</div>
-									<p class="tx-12 tx-gray-500 mb-2">Example of Valex Bordered Table.. <a href="">Learn more</a></p>
-								</div>
 								<div class="card-body">
 									<div class="table-responsive">
-										<table id="example" class="table key-buttons text-md-nowrap">
+										<table id="example1" class="table key-buttons text-md-nowrap" data-page-length="50">
 											<thead>
 												<tr>
 													<th class="border-bottom-0">رقم الفاتورة</th>
