@@ -24,6 +24,8 @@ Auth::routes(['register' => false]);
 Route::group(['namespace' => 'Dashboard', 'middleware' => 'auth'], function () {
     Route::get('/dashboard' , 'DashboardController@index')->name('dashboard');
     Route::resource('invoices', 'InvoiceController');
+    Route::resource('customers', 'CustomerController');
+    Route::get('/section/{id}', 'InvoiceController@getProducts');
     Route::resource('sections', 'SectionController');
     Route::resource('products', 'ProductController');
 

@@ -28,12 +28,11 @@
 						<!--div-->
 						<div class="col-xl-12">
 							<div class="card mg-b-20">
-								<div class="card mg-b-20">
 									<div class="card-header pb-0">
 										<div class="d-flex justify-content-between">
 											<div class="col-sm-6 col-md-4 col-xl-3">
 												<a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale"
-											data-toggle="modal" href="{{route('invoices.create')}}">إضافة فاتورة</a>
+											href="{{route('invoices.create')}}">إضافة فاتورة</a>
 											</div>
 										</div>
 									</div>
