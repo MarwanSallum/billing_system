@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CustomerRequest;
 
 class CustomerController extends Controller
 {
@@ -35,9 +36,16 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CustomerRequest $request)
     {
-        //
+        Customer::create([
+            'name' => $request->name,
+            'email' =>$request->email,
+            'mobile' =>$request->mobile,
+            'address' =>$request->address,
+        ]);
+        return redirect()->route('customers.index')->with(['success' => "تم حفظ بيانات العميل بنجاح"]);
+
     }
 
     /**
