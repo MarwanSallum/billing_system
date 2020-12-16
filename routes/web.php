@@ -23,6 +23,7 @@ Auth::routes(['register' => false]);
 
 Route::group(['namespace' => 'Dashboard', 'middleware' => 'auth'], function () {
     Route::get('/dashboard' , 'DashboardController@index')->name('dashboard');
+    Route::get('/profile' , 'DashboardController@profile')->name('profile');
     Route::resource('invoices', 'InvoiceController');
     Route::resource('customers', 'CustomerController');
     Route::get('/section/{id}', 'InvoiceController@getProducts');
