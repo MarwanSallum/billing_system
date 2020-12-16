@@ -115,6 +115,7 @@
 											<th class="wd-lg-25p tx-right">رقم الفاتورة</th>
 											<th class="wd-lg-25p tx-right">العميل</th>
 											<th class="wd-lg-25p tx-right">إجمالي قيمة الفاتورة</th>
+											<th class="wd-lg-25p tx-right">الإجراء</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -123,30 +124,46 @@
 											<td class="tx-right tx-medium tx-inverse">2343252</td>
 											<td class="tx-right tx-medium tx-inverse">مستشفى فقيه</td>
 											<td class="tx-right tx-medium tx-danger">-42,305.10</td>
+											<td>
+														<a href=""><button class="btn btn-info btn-block">عرض</button></a>
+											</td>
 										</tr>
 										<tr>
 											<td>06 Dec 2019</td>
 											<td class="tx-right tx-medium tx-inverse">2325676</td>
 											<td class="tx-right tx-medium tx-inverse">شركة بترجي</td>
 											<td class="tx-right tx-medium tx-danger">-113,015.02</td>
+											<td>
+												<a href=""><button class="btn btn-info btn-block">عرض</button></a>
+
+											</td>
 										</tr>
 										<tr>
 											<td>07 Dec 2019</td>
 											<td class="tx-right tx-medium tx-inverse">2124329</td>
 											<td class="tx-right tx-medium tx-inverse">شركة مجموعة بن لادن القابضة</td>
 											<td class="tx-right tx-medium tx-danger">-303,234.45</td>
+											<td>
+												<a href=""><button class="btn btn-info btn-block">عرض</button></a>
+											</td>
 										</tr>
 										<tr>
 											<td>08 Dec 2019</td>
 											<td class="tx-right tx-medium tx-inverse">3214563</td>
 											<td class="tx-right tx-medium tx-inverse">عيادات عيد كلينك</td>
 											<td class="tx-right tx-medium tx-danger">-214,356.22</td>
+											<td>
+												<a href=""><button class="btn btn-info btn-block">عرض</button></a>
+											</td>
 										</tr>
 										<tr>
 											<td>09 Dec 2019</td>
 											<td class="tx-right tx-medium tx-inverse">3456543</td>
 											<td class="tx-right tx-medium tx-inverse">شركة واحد سار</td>
 											<td class="tx-right tx-medium tx-danger">-56,400</td>
+											<td>
+												<a href=""><button class="btn btn-info btn-block">عرض</button></a>
+											</td>
 										</tr>
 									</tbody>
 								</table>
