@@ -21,16 +21,6 @@ class CustomerController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -47,29 +37,6 @@ class CustomerController extends Controller
         return redirect()->route('customers.index')->with(['success' => "تم حفظ بيانات العميل بنجاح"]);
 
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Customer $customer)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Customer $customer)
-    {
-        //
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -77,9 +44,18 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request)
     {
-        //
+        $update_customer = Customer::findOrFail($request->customer_id);
+
+        $update_customer->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'mobile'=>$request->mobile,
+            'address'=>$request->address,
+        ]);
+        return redirect()->route('customers.index')->with(['success' => "تم تحديث بيانات العميل بنجاح"]);
+
     }
 
     /**
@@ -88,8 +64,11 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy(Request $request)
     {
-        //
+        $delete_customer = Customer::findOrFail($request->customer_id);
+        $delete_customer->delete();
+        return redirect()->route('customers.index')->with(['success' => "تم حذف العميل بنجاح"]);
+
     }
 }

@@ -66,14 +66,14 @@
 											<td>{{$customer->address}}</td>
 												<td>
 													<button class="btn btn-outline-success btn-sm"
-													data-customer_name="{{ $customer->name }}" data-customer_id="{{ $customer->id }}"
-													data-customer_email="{{ $customer->email }}"
-													data-customer_address="{{$customer->address}}"
-													data-customer_mobile="{{ $customer->mobile }}" data-toggle="modal"
+													data-name="{{ $customer->name }}" data-customer_id="{{ $customer->id }}"
+													data-email="{{ $customer->email }}"
+													data-address="{{$customer->address}}"
+													data-mobile="{{ $customer->mobile }}" data-toggle="modal"
 													data-target="#edit_customer">تعديل</button>
 	
 												<button class="btn btn-outline-danger btn-sm " data-customer_id="{{ $customer->id }}"
-													data-customer_name="{{ $customer->name }}" data-toggle="modal"
+													data-name="{{ $customer->name }}" data-toggle="modal"
 													data-target="#delete_customer">حذف</button>
 												</td>
 											</tr>
@@ -237,17 +237,17 @@
 	$('#edit_customer').on('show.bs.modal', function(event) {
 		var button = $(event.relatedTarget)
 		var id = button.data('id')
-		var customer_name = button.data('customer_name')
-		var customer_email = button.data('customer_email')
-		var customer_mobile = button.data('customer_mobile')
-		var customer_address = button.data('customer_address')
+		var name = button.data('name')
+		var email = button.data('email')
+		var mobile = button.data('mobile')
+		var address = button.data('address')
 		var customer_id = button.data('customer_id')
 		var modal = $(this)
 		modal.find('.modal-body #id').val(id);
-		modal.find('.modal-body #customer_name').val(customer_name);
-		modal.find('.modal-body #customer_email').val(customer_email);
-		modal.find('.modal-body #customer_mobile').val(customer_mobile);
-		modal.find('.modal-body #customer_address').val(customer_address);
+		modal.find('.modal-body #name').val(name);
+		modal.find('.modal-body #email').val(email);
+		modal.find('.modal-body #mobile').val(mobile);
+		modal.find('.modal-body #address').val(address);
 		modal.find('.modal-body #customer_id').val(customer_id);
 	})
 </script>
@@ -256,10 +256,10 @@
     $('#delete_customer').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var customer_id = button.data('customer_id')
-        var customer_name = button.data('customer_name')
+        var name = button.data('name')
         var modal = $(this)
         modal.find('.modal-body #customer_id').val(customer_id);
-        modal.find('.modal-body #customer_name').val(customer_name);
+        modal.find('.modal-body #name').val(name);
     })
 </script>
 @endsection
